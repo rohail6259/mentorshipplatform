@@ -1,7 +1,14 @@
 import { createContext } from "react";
 
 const initialState = {
-    user: {},
+    user: {
+        id: "",
+        isAuthValid: false,
+        email: "",
+        firstName: "",
+        lastName: "",
+        intro: ""
+    },
 };
 
 const MPContext = createContext();

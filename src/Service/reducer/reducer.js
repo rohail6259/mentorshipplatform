@@ -1,17 +1,21 @@
 import { initialState } from "../context/context";
-import { signup, login } from "../actions/actions";
+import { signup, login, saveUserIntro } from "../actions/actions";
 
 export const reducer = (contextData = initialState, { type, payload }) => {
     let user = {};
 
     switch (type) {
         case "SIGN_UP":
-            signup(user, payload.signUpData, payload.history);
+            signup(user, payload.signUpData);
             return { ...contextData, user };
 
         case "LOGIN":
-            login(user, payload.loginData, payload.history);
+            login(user, payload.loginData);
             return { ...contextData, user };
+
+        case "SAVE_USER_INTRO":
+            saveUserIntro(contextData, payload.intro);
+            return { ...contextData };
 
         default:
             return contextData;

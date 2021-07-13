@@ -1,16 +1,35 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Input, Button, ControlLabel } from "rsuite";
 import { MPContext } from "../Service/context/context";
 
 const Login = () => {
-    const { dispatch } = useContext(MPContext);
+    const { contextData, dispatch } = useContext(MPContext);
+    const { user } = contextData;
+
     const history = useHistory();
 
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",
     });
+
+    useEffect(() => {
+        let isDataAvailable = false;
+
+        if (!user.isAuthValid) fetchData();
+
+        function fetchData() {
+            if (isDataAvailable) return;
+
+            setTimeout(() => {
+                if (user.isAuthValid) {
+                    isDataAvailable = true;
+                    history.push("/");
+                } else fetchData();
+            }, 500);
+        }
+    }, [user, history]);
 
     const handleFormInputOnChange = (value, event) => {
         setLoginData({
@@ -25,13 +44,12 @@ const Login = () => {
             type: "LOGIN",
             payload: {
                 loginData,
-                history,
             },
         });
     };
 
     return (
-        <section className="login">
+        <section className="login pt-5 pt-lg-0">
             <div className="container">
                 <div className="row align-items-center justify-content-center">
                     <div className="col-12 col-md-8 col-lg-6 col-xl-8 min-vh-100 d-flex flex-column align-items-center justify-content-start justify-content-lg-center">
