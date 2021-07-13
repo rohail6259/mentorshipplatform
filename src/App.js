@@ -5,6 +5,7 @@ import { reducer } from "./Service/reducer/reducer";
 import ProtectedRoute from "./Components/Global/ProtectedRoute";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
 
 const App = () => {
     // REACT USEREDUCER - REDUX PATTERN
@@ -15,6 +16,7 @@ const App = () => {
             <Router>
                 <Switch>
                     <Route path="/login" component={Login} />
+                    <Route path="/signup" component={SignUp} />
                     <ProtectedRoute path="/" exact component={Home} />
                 </Switch>
             </Router>
