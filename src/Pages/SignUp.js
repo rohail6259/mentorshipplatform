@@ -59,10 +59,12 @@ const SignUp = () => {
                     <div className="row align-items-center justify-content-center">
                         <div className="col-12 col-md-8 col-lg-6 col-xl-8 min-vh-100 d-flex flex-column align-items-center justify-content-start justify-content-lg-center">
                             <div className="col-12">
+                                {/* TITLE & SUBTITLE */}
                                 <h1 className="title">Getting Started</h1>
                                 <p className="mt-2 mb-4">
                                     Lorem ipsum dolor sit amet
                                 </p>
+                                {/* SIGNUP FORM  */}
                                 <form onSubmit={(event) => handleSignUp(event)}>
                                     <div className="form-row mb-3">
                                         <div className="col">
@@ -139,10 +141,12 @@ const SignUp = () => {
                                         Sign Up
                                     </Button>
                                 </form>
+                                {/* LOGIN LINK */}
                                 <p className="my-2 text-center">
                                     Already have an account?{" "}
                                     <Link to="/login">Login</Link>
                                 </p>
+                                {/* T&C */}
                                 <p className="mt-3 text-center">
                                     By creating an account, you agree to
                                     FutureLab's{" "}

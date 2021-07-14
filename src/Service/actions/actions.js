@@ -58,6 +58,18 @@ export async function saveUserIntro(contextData, intro) {
         );
         if (data) contextData.user.intro = intro;
     } catch (error) {
-        if (error.response.status === 400) alert("Oops! Something went wrong.");
+        if (error.response.status === 400)
+            alert("Oops! Something went wrong, Unable to save Intro.");
+    }
+}
+
+export async function getMentors(mentors) {
+    try {
+        let { data } = await axios.get(
+            `${process.env.REACT_APP_API_URL}/mentors`
+        );
+        if (data) data.forEach((e) => mentors.push(e));
+    } catch (error) {
+        if (error.response.status === 400) alert("No Mentors Found!");
     }
 }

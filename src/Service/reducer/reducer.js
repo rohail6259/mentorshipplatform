@@ -1,5 +1,5 @@
 import { initialState } from "../context/context";
-import { signup, login, saveUserIntro } from "../actions/actions";
+import { signup, login, saveUserIntro, getMentors } from "../actions/actions";
 
 export const reducer = (contextData = initialState, { type, payload }) => {
     let user = {};
@@ -17,6 +17,10 @@ export const reducer = (contextData = initialState, { type, payload }) => {
             saveUserIntro(contextData, payload.intro);
             return { ...contextData };
 
+        case "GET_MENTORS":
+            let mentors = [];
+            getMentors(mentors);
+            return { ...contextData, mentors };
         default:
             return contextData;
     }

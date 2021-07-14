@@ -7,9 +7,96 @@ body {
   font-family: "DM Sans", sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.back-btn {
+  position: absolute;
+  top: 1.5em;
+  left: 1em;
+}
+
+.back-btn:hover {
+  background-color: rgba(211, 211, 211, 0.2);
+}
+
 h1 {
   font-size: 24px;
   font-weight: 700;
   line-height: 31.25px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+h6 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 3%;
+  -webkit-transform: translate(-50%, 3%);
+          transform: translate(-50%, 3%);
+  width: 90%;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (min-width: 768px) {
+  .bottom-nav {
+    width: 35em;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .bottom-nav {
+    width: 50em;
+  }
+}
+
+.bottom-nav .nav-active path {
+  fill: #5555fd;
+}
+
+.dashboard .mentors .picture {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+}
+
+.dashboard .mentors:hover {
+  background-color: rgba(211, 211, 211, 0.2);
+  border-radius: 12px;
+}
+
+.mentor-profile img {
+  border-radius: 100%;
+}
+
+.mentor-profile .title {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.mentor-profile .intro {
+  font-weight: 400;
+  font-size: 14px;
 }
 /*# sourceMappingURL=custom.css.map */

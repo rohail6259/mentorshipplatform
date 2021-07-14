@@ -8,7 +8,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
             {...rest}
             render={(props) => {
                 const token = localStorage.getItem("token");
-                if (token) {
+                if (token !== null) {
                     let decoded = jwt_decode(token);
                     if (decoded?.isAuthValid) {
                         return <Component {...props} {...rest} />;

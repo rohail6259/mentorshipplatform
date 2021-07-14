@@ -9,6 +9,7 @@ const initialState = {
         lastName: "",
         intro: ""
     },
+    mentors: []
 };
 
 const MPContext = createContext();
