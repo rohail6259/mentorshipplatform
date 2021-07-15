@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const BottomNav = ({ match }) => {
-    console.log(match, window.location);
+const BottomNav = () => {
     return (
         <div className="py-3 bottom-nav d-flex align-items-center justify-content-around">
             <NavLink to="/" exact activeClassName="nav-active">

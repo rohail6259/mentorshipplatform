@@ -8,13 +8,19 @@ import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import Sessions from "./Pages/Sessions";
 import MentorProfile from "./Pages/MentorProfile";
-import BottomNav from "./Components/Global/BottomNav";
+import BottomNavHOC from "./Components/Global/BottomNavHOC";
 
 const App = () => {
     // REACT USEREDUCER - REDUX PATTERN
     const [contextData, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
+        let userId = localStorage.getItem("userId");
+        console.log(userId);
+        setTimeout(() => {
+            if (userId !== null)
+                dispatch({ type: "GET_USER_INFO", payload: { id: userId } });
+        }, 1000);
         dispatch({ type: "GET_MENTORS" });
     }, [dispatch]);
 
@@ -33,8 +39,7 @@ const App = () => {
                         component={MentorProfile}
                     />
                 </Switch>
-                {/* TODO:: HIDE ON MENTOR & APPOINTMENT COMPONENT */}
-                <BottomNav />
+                <BottomNavHOC />
             </Router>
         </MPContext.Provider>
     );
