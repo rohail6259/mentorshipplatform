@@ -16,15 +16,12 @@ const App = () => {
 
     useEffect(() => {
         let userId = localStorage.getItem("userId");
-        console.log(userId);
         setTimeout(() => {
             if (userId !== null)
                 dispatch({ type: "GET_USER_INFO", payload: { id: userId } });
         }, 1000);
         dispatch({ type: "GET_MENTORS" });
     }, [dispatch]);
-
-    // TODO:: ON REFRESH GET THE USER DATA
 
     return (
         <MPContext.Provider value={{ contextData, dispatch }}>
@@ -35,7 +32,7 @@ const App = () => {
                     <ProtectedRoute path="/" exact component={Dashboard} />
                     <ProtectedRoute path="/sessions" component={Sessions} />
                     <ProtectedRoute
-                        path="/mentor/:id"
+                        path="/mentor/:id?/:reschedule?"
                         component={MentorProfile}
                     />
                 </Switch>

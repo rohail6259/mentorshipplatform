@@ -6,16 +6,20 @@ import Appointment from "../Components/Scheduling/Appointment";
 
 const MentorProfile = ({ match }) => {
     const {
-        params: { id },
+        params: { id, reschedule },
     } = match;
 
     const { contextData } = useContext(MPContext);
-    const { user, mentors } = contextData;
+    const { mentors } = contextData;
 
     const history = useHistory();
 
     const [profileData, setProfileData] = useState({});
     const [isSchedulingCompReady, setIsSchedulingCompReady] = useState(false);
+
+    useEffect(() => {
+        if (reschedule) setIsSchedulingCompReady(true);
+    }, [reschedule]);
 
     useEffect(() => {
         if (mentors.length > 0) setMentorData();
@@ -41,7 +45,7 @@ const MentorProfile = ({ match }) => {
             {isSchedulingCompReady && (
                 <Appointment
                     mentorId={id}
-                    userId={user.id}
+                    scheduleId={reschedule}
                     setAppointmentState={setIsSchedulingCompReady}
                 />
             )}

@@ -19,8 +19,12 @@ a {
     position: absolute;
     top: 1.5em;
     left: 1em;
+    z-index: 999;
+    padding: 1em 0.5em;
+    border-radius: 6px;
     &:hover {
         background-color: rgba(211, 211, 211, 0.2);
+        cursor: pointer;
     }
 }
 
@@ -43,7 +47,10 @@ h6 {
 
 // BOTTOM NAV
 .bottom-nav {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
     position: fixed;
+    z-index: 999;
     left: 50%;
     bottom: 3%;
     transform: translate(-50%, 3%);
@@ -58,7 +65,10 @@ h6 {
     }
     .nav-active {
         path {
-            fill: #5555fd;
+            fill: #3498ff;
+        }
+        small {
+            color: #3498ff;
         }
     }
 }
@@ -91,5 +101,23 @@ h6 {
     .intro {
         font-weight: 400;
         font-size: 14px;
+    }
+}
+
+// SESSIONS PAGE
+.sessions {
+    .session-info {
+        border: 1px solid #e5e5ea;
+        border-radius: 6px;
+        .mentor-info {
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 100%;
+            }
+        }
+        .join {
+            border-top: 1px solid #e5e5ea;
+        }
     }
 }

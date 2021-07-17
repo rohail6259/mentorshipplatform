@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Icon, ControlLabel, DatePicker } from "rsuite";
+import { MPContext } from "../../Service/context/context";
 import Success from "./Success";
 
-const Appointment = ({ mentorId, userId, setAppointmentState }) => {
+const Appointment = ({ mentorId, scheduleId, setAppointmentState }) => {
+    const { contextData, dispatch } = useContext(MPContext);
+    const { user } = contextData;
+
     const [schedulingData, setSchedulingData] = useState({
         time: "",
         date: "",
         mentorId,
-        userId,
+        userId: "",
     });
     const [isSuccessFul, setIsSuccessful] = useState(false);
 
@@ -19,14 +23,24 @@ const Appointment = ({ mentorId, userId, setAppointmentState }) => {
         setSchedulingData({
             ...schedulingData,
             [type]: value,
+            userId: user.id,
         });
     };
 
     const handleAppointment = () => {
         const { time, date, mentorId, userId } = schedulingData;
+
         if (time && date && mentorId.length > 0 && userId.length > 0) {
-            console.log("Appointment Created!", schedulingData);
-            setIsSuccessful(true);
+            if (scheduleId)
+                dispatch({
+                    type: "UPDATE_APPOINTMENT",
+                    payload: { schedulingData, scheduleId, setIsSuccessful },
+                });
+            else
+                dispatch({
+                    type: "SAVE_APPOINTMENT",
+                    payload: { schedulingData, setIsSuccessful },
+                });
         }
     };
 

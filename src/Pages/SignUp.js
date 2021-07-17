@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { MPContext } from "../Service/context/context";
 import { Input, Button, ControlLabel } from "rsuite";
 import Intro from "../Components/Intro/Intro";
@@ -7,6 +7,8 @@ import Intro from "../Components/Intro/Intro";
 const SignUp = () => {
     const { contextData, dispatch } = useContext(MPContext);
     const { user } = contextData;
+
+    const history = useHistory();
 
     const [signUpData, setSignUpData] = useState({
         firstName: "",
@@ -19,20 +21,23 @@ const SignUp = () => {
 
     useEffect(() => {
         let isDataAvailable = false;
+        let interval = null;
 
         if (!user.isAuthValid) fetchData();
 
         function fetchData() {
             if (isDataAvailable) return;
 
-            setTimeout(() => {
+            interval = setTimeout(() => {
                 if (user.isAuthValid) {
                     isDataAvailable = true;
-                    setIsIntroCompReady(true);
+                    if (user.intro.length <= 0) setIsIntroCompReady(true);
+                    else history.push("/");
                 } else fetchData();
             }, 500);
         }
-    }, [user]);
+        return () => clearInterval(interval);
+    }, [user, history]);
 
     const handleFormInputOnChange = (value, event) => {
         setSignUpData({

@@ -38,7 +38,7 @@ export async function login(user, userInfo) {
         );
         if (data) {
             localStorage.setItem("token", headers["x-auth-token"]);
-            localStorage.setItem('userId', data._id)
+            localStorage.setItem("userId", data._id);
             Object.assign(user, {
                 id: data._id,
                 isAuthValid: data.isAuthValid,
@@ -70,7 +70,7 @@ export async function getUserInfo(user, id) {
             });
         }
     } catch (error) {
-        if (error.response.status === 400) alert('User not found!');
+        if (error.response.status === 400) alert("User not found!");
     }
 }
 
@@ -95,5 +95,40 @@ export async function getMentors(mentors) {
         if (data) data.forEach((e) => mentors.push(e));
     } catch (error) {
         if (error.response.status === 400) alert("No Mentors Found!");
+    }
+}
+
+export async function saveAppointment(schedulingData, setIsSuccessful) {
+    try {
+        let { data } = await axios.post(
+            `${process.env.REACT_APP_API_URL}/appointment`,
+            schedulingData
+        );
+        if (data.status === 1) setIsSuccessful(true);
+    } catch (error) {
+        if (error.response.status === 400) alert("Unable to save Appointment!");
+    }
+}
+
+export async function updateAppointment(schedulingData, id, setIsSuccessful) {
+    try {
+        let { data } = await axios.put(
+            `${process.env.REACT_APP_API_URL}/appointment/${id}`,
+            schedulingData
+        );
+        if (data.status === 1) setIsSuccessful(true);
+    } catch (error) {
+        if (error.response.status === 400) alert("Unable to update Appointment!");
+    }
+}
+
+export async function getAppointments(appointments) {
+    try {
+        let { data } = await axios.get(
+            `${process.env.REACT_APP_API_URL}/appointment`
+        );
+        if (data) data.forEach((e) => appointments.push(e));
+    } catch (error) {
+        if (error.response.status === 400) alert("No Appointment Found!");
     }
 }

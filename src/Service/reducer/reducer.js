@@ -1,5 +1,14 @@
 import { initialState } from "../context/context";
-import { signup, login, saveUserIntro, getUserInfo, getMentors } from "../actions/actions";
+import {
+    signup,
+    login,
+    saveUserIntro,
+    getUserInfo,
+    getMentors,
+    getAppointments,
+    saveAppointment,
+    updateAppointment,
+} from "../actions/actions";
 
 export const reducer = (contextData = initialState, { type, payload }) => {
     let user = {};
@@ -25,6 +34,23 @@ export const reducer = (contextData = initialState, { type, payload }) => {
             let mentors = [];
             getMentors(mentors);
             return { ...contextData, mentors };
+
+        case "SAVE_APPOINTMENT":
+            saveAppointment(payload.schedulingData, payload.setIsSuccessful);
+            return { ...contextData };
+
+        case "UPDATE_APPOINTMENT":
+            updateAppointment(
+                payload.schedulingData,
+                payload.scheduleId,
+                payload.setIsSuccessful
+            );
+            return { ...contextData };
+
+        case "GET_APPOINTMENTS":
+            let appointments = [];
+            getAppointments(appointments);
+            return { ...contextData, appointments };
         default:
             return contextData;
     }
