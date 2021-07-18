@@ -4,10 +4,10 @@ import { MPContext } from "../Service/context/context";
 
 const Sessions = () => {
     const { contextData, dispatch } = useContext(MPContext);
-    const { user, appointments, mentors } = contextData;
+    const { appointments, mentors } = contextData;
 
     const [sessionsData, setSessionsData] = useState([]);
-    const [isSessionReady, setIsSessionReady] = useState(false);
+    // const [isSessionReady, setIsSessionReady] = useState(false);
 
     useEffect(() => {
         dispatch({ type: "GET_APPOINTMENTS" });
