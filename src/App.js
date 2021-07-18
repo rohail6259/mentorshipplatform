@@ -5,10 +5,11 @@ import { reducer } from "./Service/reducer/reducer";
 import ProtectedRoute from "./Components/Global/ProtectedRoute";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
+import BottomNavHOC from "./Components/Global/BottomNavHOC";
 import Dashboard from "./Pages/Dashboard";
 import Sessions from "./Pages/Sessions";
 import MentorProfile from "./Pages/MentorProfile";
-import BottomNavHOC from "./Components/Global/BottomNavHOC";
+import Meeting from "./Pages/Meeting";
 
 const App = () => {
     // REACT USEREDUCER - REDUX PATTERN
@@ -35,6 +36,7 @@ const App = () => {
                         path="/mentor/:id?/:reschedule?"
                         component={MentorProfile}
                     />
+                    <ProtectedRoute path="/meeting/:id" component={Meeting} />
                 </Switch>
                 <BottomNavHOC />
             </Router>

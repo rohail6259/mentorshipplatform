@@ -32,12 +32,11 @@ const Login = () => {
         }
     }, [user, history]);
 
-    const handleFormInputOnChange = (value, event) => {
+    const handleFormInputOnChange = (value, event) =>
         setLoginData({
             ...loginData,
             [event.target.name]: value,
         });
-    };
 
     const handleLogin = (event) => {
         event.preventDefault();

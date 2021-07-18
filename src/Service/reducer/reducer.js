@@ -51,6 +51,7 @@ export const reducer = (contextData = initialState, { type, payload }) => {
             let appointments = [];
             getAppointments(appointments);
             return { ...contextData, appointments };
+
         default:
             return contextData;
     }

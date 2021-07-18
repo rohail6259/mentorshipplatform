@@ -118,7 +118,8 @@ export async function updateAppointment(schedulingData, id, setIsSuccessful) {
         );
         if (data.status === 1) setIsSuccessful(true);
     } catch (error) {
-        if (error.response.status === 400) alert("Unable to update Appointment!");
+        if (error.response.status === 400)
+            alert("Unable to update Appointment!");
     }
 }
 

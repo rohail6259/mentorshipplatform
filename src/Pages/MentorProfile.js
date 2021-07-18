@@ -35,9 +35,7 @@ const MentorProfile = ({ match }) => {
         }
     }, [mentors, id]);
 
-    const handleScheduling = () => {
-        setIsSchedulingCompReady(true);
-    };
+    const handleScheduling = () => setIsSchedulingCompReady(true);
 
     return (
         <>

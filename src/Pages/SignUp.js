@@ -39,12 +39,11 @@ const SignUp = () => {
         return () => clearInterval(interval);
     }, [user, history]);
 
-    const handleFormInputOnChange = (value, event) => {
+    const handleFormInputOnChange = (value, event) =>
         setSignUpData({
             ...signUpData,
             [event.target.name]: value,
         });
-    };
 
     const handleSignUp = (event) => {
         event.preventDefault();

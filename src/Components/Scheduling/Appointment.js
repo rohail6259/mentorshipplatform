@@ -15,9 +15,7 @@ const Appointment = ({ mentorId, scheduleId, setAppointmentState }) => {
     });
     const [isSuccessFul, setIsSuccessful] = useState(false);
 
-    const handleBackButton = () => {
-        setAppointmentState(false);
-    };
+    const handleBackButton = () => setAppointmentState(false);
 
     const handleFormInputOnChange = (value, type) => {
         setSchedulingData({

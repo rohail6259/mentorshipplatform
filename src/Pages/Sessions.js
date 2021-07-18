@@ -7,7 +7,6 @@ const Sessions = () => {
     const { appointments, mentors } = contextData;
 
     const [sessionsData, setSessionsData] = useState([]);
-    // const [isSessionReady, setIsSessionReady] = useState(false);
 
     useEffect(() => {
         dispatch({ type: "GET_APPOINTMENTS" });
@@ -119,10 +118,16 @@ const Sessions = () => {
                                     </div>
                                 </div>
                                 <div className="join p-3 d-flex align-items-center justify-content-around">
-                                    <Button appearance="subtle" href={`/mentor/${appointment.mentorId}/${appointment._id}`}>
+                                    <Button
+                                        appearance="subtle"
+                                        href={`/mentor/${appointment.mentorId}/${appointment._id}`}
+                                    >
                                         Reschedule
                                     </Button>
-                                    <Button appearance="primary">
+                                    <Button
+                                        appearance="primary"
+                                        href={`/meeting/${appointment.mentorId}`}
+                                    >
                                         Join Room
                                     </Button>
                                 </div>
