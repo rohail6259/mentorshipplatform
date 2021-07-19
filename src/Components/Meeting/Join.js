@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "rsuite";
 
-const Join = ({ mentors, mentorId, handleJoinButton }) => {
+const Join = ({ mentors, mentorId, enableJoinButton, handleJoinButton }) => {
     const getMentorInfo = (id, type) => {
         for (let i = 0; i < mentors.length; i++) {
             if (mentors[i]._id === id) {
@@ -68,6 +68,7 @@ const Join = ({ mentors, mentorId, handleJoinButton }) => {
                                 onClick={handleJoinButton}
                                 appearance="primary"
                                 block
+                                disabled={enableJoinButton ? true : false}
                             >
                                 Join
                             </Button>

@@ -15,6 +15,7 @@ const Meeting = ({ match }) => {
 
     const [joinMeeting, setJoinMeeting] = useState(false);
     const [meetingEnded, setMeetingEnded] = useState(false);
+    const [enableJoinButton, setEnableJoinButton] = useState(true);
     const [meetingData, setMeetingData] = useState();
     const [attendeeData, setAttendeeData] = useState();
 
@@ -28,6 +29,7 @@ const Meeting = ({ match }) => {
             let { Meeting, Attendee } = data;
             setMeetingData(Meeting);
             setAttendeeData(Attendee);
+            setEnableJoinButton(false)
         }
         getMeetingData();
     }, []);
@@ -71,10 +73,11 @@ const Meeting = ({ match }) => {
             firstVideoDeviceId
         );
         meetingSession.audioVideo.start();
+
+        setJoinMeeting(true);
     };
 
     const handleJoin = () => {
-        setJoinMeeting(true);
         setTimeout(() => startMeeting(), 2000);
     };
 
@@ -90,6 +93,7 @@ const Meeting = ({ match }) => {
                 <Join
                     mentors={mentors}
                     mentorId={id}
+                    enableJoinButton={enableJoinButton}
                     handleJoinButton={handleJoin}
                 />
             )}
